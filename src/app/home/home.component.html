@@ -8,5 +8,47 @@
   </li>
 </ul>
 
+<div>
+  <!--<ng-container></ng-container>-->
 
-<div></div>
+  <div *ngFor="let item of carousel">
+    <!--<h4>{{item.title}}</h4>-->
+  </div>
+
+</div>
+
+<div class="border list "
+     infinite-scroll
+     [scrollWindow]="false"
+     [infiniteScrollDistance]="scrollDistance"
+     [infiniteScrollUpDistance]="scrollUpDistance"
+     [infiniteScrollThrottle]="throttle"
+     (scrolled)="onScrollDown()"
+     (scrolledUp)="onUp()"
+
+
+>
+  <!--<ul class="border" id="infinite-scroller" appInfiniteScroller scrollPerecnt="70" [immediateCallback]="true" [scrollCallback]="news"  >-->
+    <!--<li *ngFor="let item of news">{{item.title}}</li>-->
+  <!--</ul>-->
+
+  <!--<ul  infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50"-->
+      <!--(scrolled)="onScroll()">-->
+    <!--<li ></li>-->
+  <!--</ul>-->
+
+    <div class="news">
+        <h4 *ngFor="let item of news">{{item.title}}</h4>
+    </div>
+
+
+
+</div>
+
+<div>
+
+  <!--<div infinite-scroll='loadMore()' infinite-scroll-distance='2'>-->
+    <!--<img ng-repeat='image in images' ng-src='http://placehold.it/225x250&text={{image}}'>-->
+  <!--</div>-->
+
+</div>
