@@ -1,13 +1,30 @@
 .border {
+  border: green solid 1px;
+}
+
+.border-orange {
+  border: orange solid 1px;
+}
+
+.carousel {
+  //height: 400px;
+}
+
+.news-card {
+
   border: red solid 1px;
+  //margin: 10px 0;
+
+  //margin-top: 10px;
+  //margin-bottom: 10px;
+
+  .news-image {
+    height: 200px;
+  }
+
+  .footer-bg {
+    color: black;
+  }
+
 }
 
-.list {
-  overflow-y: auto;
-  height: 200px;
-  //width: 200px;
-}
-
-.news {
-  border: aqua solid 1px;
-}

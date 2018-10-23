@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { NewsService } from '../service/news.service';
 import {Data} from '@angular/router';
+import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 
 
 interface DataResponse {
@@ -11,28 +12,39 @@ interface DataResponse {
 }
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+    selector: 'app-home',
+    templateUrl: './home.component.html',
+    styleUrls: ['./home.component.scss'],
+    providers: [NgbCarouselConfig]
 })
 export class HomeComponent implements OnInit {
+
+    BASE_URL = 'http://localhost:3000';
+
+    IMG_URL = this.BASE_URL + '/public/images/2018-10-19_12:32.jpg';
 
     hello = 'good';
 
     currentPage = 0;
-    limit = 3;
+    limit = 7;
 
     carousel: Array<any> = [];
     news: Array<any> = [];
 
-    // scrollCallback;
+    // load more;
     scrollDistance = 1;
     scrollUpDistance = 2;
     direction = '';
     throttle = 30;
 
-    constructor(private http: HttpClient, private newsService: NewsService) {
+    // carousel
+    images = [1, 2, 3, 4].map(() => `https://picsum.photos/900/500?random&t=${Math.random()}`);
 
+    constructor(private config: NgbCarouselConfig, private http: HttpClient, private newsService: NewsService) {
+        config.interval = 10000;
+        config.wrap = false;
+        config.keyboard = false;
+        config.pauseOnHover = false;
     }
 
     ngOnInit() {

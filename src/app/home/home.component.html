@@ -1,54 +1,101 @@
-<p>
-  home works!
-</p>
+<!--<p>-->
+<!--home works!-->
+<!--</p>-->
 
-<ul>
-  <li>
-    <h2><a routerLink="/detail" routerLinkActive="active">detail</a></h2>
-  </li>
-</ul>
+<!--<ul>-->
+<!--<li>-->
+<!--<h2><a routerLink="/detail" routerLinkActive="active">detail</a></h2>-->
+<!--</li>-->
+<!--</ul>-->
 
 <div>
-  <!--<ng-container></ng-container>-->
-
-  <div *ngFor="let item of carousel">
-    <!--<h4>{{item.title}}</h4>-->
-  </div>
-
-</div>
-
-<div class="border list "
-     infinite-scroll
-     [scrollWindow]="false"
-     [infiniteScrollDistance]="scrollDistance"
-     [infiniteScrollUpDistance]="scrollUpDistance"
-     [infiniteScrollThrottle]="throttle"
-     (scrolled)="onScrollDown()"
-     (scrolledUp)="onUp()"
+    <!--<ng-container></ng-container>-->
 
 
->
-  <!--<ul class="border" id="infinite-scroller" appInfiniteScroller scrollPerecnt="70" [immediateCallback]="true" [scrollCallback]="news"  >-->
-    <!--<li *ngFor="let item of news">{{item.title}}</li>-->
-  <!--</ul>-->
 
-  <!--<ul  infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50"-->
-      <!--(scrolled)="onScroll()">-->
-    <!--<li ></li>-->
-  <!--</ul>-->
+    <div class="carousel">
+        <ngb-carousel *ngIf="images">
+            <ng-template ngbSlide>
+                <img [src]="images[0]" alt="Random first slide">
+                <div class="carousel-caption">
+                    <h3>10 seconds between slides...</h3>
+                    <p>This carousel uses customized default values.</p>
+                </div>
+            </ng-template>
+            <ng-template ngbSlide>
+                <img [src]="images[1]" alt="Random second slide">
+                <div class="carousel-caption">
+                    <h3>No mouse events...</h3>
+                    <p>This carousel doesn't pause or resume on mouse events</p>
+                </div>
+            </ng-template>
+            <ng-template ngbSlide>
+                <img [src]="images[2]"  alt="Random third slide">
+                <div class="carousel-caption">
+                    <h3>No keyboard...</h3>
+                    <p>This carousel uses customized default values.</p>
+                </div>
+            </ng-template>
+            <ng-template ngbSlide>
+                <img [src]="images[3]" alt="Random fourth slide">
+                <div class="carousel-caption">
+                    <h3>And no wrap after last slide.</h3>
+                    <p>This carousel uses customized default values.</p>
+                </div>
+            </ng-template>
+        </ngb-carousel>
 
-    <div class="news">
-        <h4 *ngFor="let item of news">{{item.title}}</h4>
+        <div *ngFor="let item of carousel">
+            <!--<h4>{{item.title}}</h4>-->
+        </div>
+    </div>
+
+    <div infinite-scroll
+         [scrollWindow]="true"
+         [infiniteScrollDistance]="scrollDistance"
+         [infiniteScrollUpDistance]="scrollUpDistance"
+         [infiniteScrollThrottle]="throttle"
+         (scrolled)="onScrollDown()"
+         (scrolledUp)="onUp()"
+    >
+
+        <div class="border-orange row">
+            <h3>asldkfjaslkdf</h3>
+        </div>
+
+        <div class="border row ">
+
+            <div *ngFor="let item of news" class="news-card col-sm-12 col-md-4">
+                <!--<h4 >{{item.title}}</h4>-->
+                <!--<h4>{{item.posted_at}}</h4>-->
+
+                <!--[ngStyle]="{ 'background-image': 'url(' + BASE_URL + item.thumbnail + ')'}"-->
+
+                <div class=" news-image"  >
+
+                </div>
+
+                <div class="footer-bg">
+                    <h4>{{item.title}}</h4>
+                    <h5>{{item.posted_at | date: 'dd MMM, yyyy h:mm a' }}</h5>
+                </div>
+
+                <!--<div class="container content" [ngStyle]="{ 'background-image': 'url(' + BASE_URL + item.thumbnail + ')'}">-->
+                <!--<div class="row">-->
+                <!--<div class="col-md-6">-->
+                <!--<h4 >{{item.title}}</h4>-->
+                <!--</div>-->
+                <!--<div class="col-md-6">-->
+                <!--<h4>{{item.posted_at}}</h4>-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--</div>-->
+
+            </div>
+        </div>
+
     </div>
 
 
-
 </div>
 
-<div>
-
-  <!--<div infinite-scroll='loadMore()' infinite-scroll-distance='2'>-->
-    <!--<img ng-repeat='image in images' ng-src='http://placehold.it/225x250&text={{image}}'>-->
-  <!--</div>-->
-
-</div>
