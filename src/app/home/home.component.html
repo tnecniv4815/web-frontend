@@ -109,9 +109,11 @@
                 <!--[ngStyle]="{ 'background-image': 'url(' + BASE_URL + item.thumbnail + ')'}"-->
 
                 <a [routerLink]="['/article', item._id]" routerLinkActive="active"  >
-                    <div class=" news-image"  >
+                    <div class=" news-image" [ngStyle]="{ 'background-image': 'url(' + BASE_URL + item.thumbnail + ')'}" ></div>
 
-                    </div>
+                    <!--<img class=" news-image" [src]="BASE_URL + item.thumbnail" alt="">-->
+
+
 
                     <div class="footer-bg">
                         <h4>{{item.title}}</h4>

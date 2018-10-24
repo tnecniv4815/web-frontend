@@ -23,6 +23,7 @@ export class DetailComponent implements OnInit {
 
   // this.id=this._Activatedroute.snapshot.params['id'];
 
+
   id: string;
   article: ArticleDetail;
 
@@ -30,7 +31,7 @@ export class DetailComponent implements OnInit {
 
   ngOnInit() {
 
-      const queryParams = this.activeRoute.snapshot.queryParams
+      const queryParams = this.activeRoute.snapshot.queryParams;
       const routeParams = this.activeRoute.snapshot.params;
 
 

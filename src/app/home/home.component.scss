@@ -1,9 +1,9 @@
 .border {
-  border: green solid 1px;
+  //border: green solid 1px;
 }
 
 .border-orange {
-  border: orange solid 1px;
+  //border: orange solid 1px;
 }
 
 .carousel {
@@ -12,7 +12,7 @@
 
 .news-card {
 
-  border: red solid 1px;
+  //border: red solid 1px;
   //margin: 10px 0;
 
   //margin-top: 10px;
@@ -20,6 +20,11 @@
 
   .news-image {
     height: 200px;
+
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+
   }
 
   .footer-bg {

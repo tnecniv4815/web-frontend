@@ -1,33 +1,35 @@
-<p>
-    detail works!
-</p>
-
-<!--<h3>{{articleId}}</h3>-->
-
-
-<h3>{{id}}</h3>
 
 
 <div>
 
-    <div *ngIf="article != undefined">
-        <div>
+    <div *ngIf="article != undefined" >
+        <div class="col-12">
             <h1>{{article.title}}</h1>
         </div>
 
-        <div>
+        <div class="col-12">
             <h3>{{article.posted_at | date: 'dd MMM, yyyy h:mm a' }}</h3>
         </div>
 
-        <div *ngFor="let item of article.contents">
-            <div *ngIf="item.type == 1">
+        <div *ngFor="let item of article.contents" class="row">
+            <div *ngIf="item.type == 1" class="col-12">
                 <!--text-->
-                <p>item</p>
+                <p [innerHTML]="item.content"></p>
             </div>
 
-            <div *ngIf="item.type == 2">
+            <div *ngIf="item.type == 2" class="col-12">
                 <!--image-->
-                <h4>image</h4>
+
+                <!--<h3>{{BASE_URL}}{{item.media_url }}</h3>-->
+                <!--<div class=" content-image" [ngStyle]="{ 'background-image': 'url(' + BASE_URL + item.media_url + ')'}" ></div>-->
+
+                <!--http://localhost:3000/public/images/_2018102413313243271.jpg-->
+                <img class="content-image" [src]="BASE_URL + item.media_url">
+
+                <h4>{{item.subtitle}}</h4>
+
+
+
             </div>
 
         </div>
