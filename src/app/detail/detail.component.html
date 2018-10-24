@@ -1,3 +1,38 @@
 <p>
-  detail works!
+    detail works!
 </p>
+
+<!--<h3>{{articleId}}</h3>-->
+
+
+<h3>{{id}}</h3>
+
+
+<div>
+
+    <div *ngIf="article != undefined">
+        <div>
+            <h1>{{article.title}}</h1>
+        </div>
+
+        <div>
+            <h3>{{article.posted_at | date: 'dd MMM, yyyy h:mm a' }}</h3>
+        </div>
+
+        <div *ngFor="let item of article.contents">
+            <div *ngIf="item.type == 1">
+                <!--text-->
+                <p>item</p>
+            </div>
+
+            <div *ngIf="item.type == 2">
+                <!--image-->
+                <h4>image</h4>
+            </div>
+
+        </div>
+
+    </div>
+
+
+</div>

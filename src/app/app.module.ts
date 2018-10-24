@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { NewsService } from './service/news.service';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
-import { NgbModule, NgbCarouselModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule, NgbCarousel, NgbCarouselConfig, NgbCarouselModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -25,7 +25,8 @@ import { HomeComponent } from './home/home.component';
     NgbModule
   ],
   providers: [
-      NewsService
+      NewsService,
+      NgbCarousel
   ],
   bootstrap: [AppComponent]
 })

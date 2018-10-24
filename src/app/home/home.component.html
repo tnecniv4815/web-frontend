@@ -14,29 +14,33 @@
 
 
     <div class="carousel">
-        <ngb-carousel *ngIf="images">
-            <ng-template ngbSlide>
+
+
+        <!--
+
+        <ngb-carousel >
+            <ng-template *ngbSlide>
                 <img [src]="images[0]" alt="Random first slide">
                 <div class="carousel-caption">
                     <h3>10 seconds between slides...</h3>
                     <p>This carousel uses customized default values.</p>
                 </div>
             </ng-template>
-            <ng-template ngbSlide>
+            <ng-template *ngbSlide>
                 <img [src]="images[1]" alt="Random second slide">
                 <div class="carousel-caption">
                     <h3>No mouse events...</h3>
                     <p>This carousel doesn't pause or resume on mouse events</p>
                 </div>
             </ng-template>
-            <ng-template ngbSlide>
+            <ng-template *ngbSlide>
                 <img [src]="images[2]"  alt="Random third slide">
                 <div class="carousel-caption">
                     <h3>No keyboard...</h3>
                     <p>This carousel uses customized default values.</p>
                 </div>
             </ng-template>
-            <ng-template ngbSlide>
+            <ng-template *ngbSlide>
                 <img [src]="images[3]" alt="Random fourth slide">
                 <div class="carousel-caption">
                     <h3>And no wrap after last slide.</h3>
@@ -45,9 +49,42 @@
             </ng-template>
         </ngb-carousel>
 
-        <div *ngFor="let item of carousel">
+        -->
+
+        <!--
+        <ngb-carousel #carousel>
+            <ng-template *ngbSlide>
+                <img src="https://lorempixel.com/900/500?r=4" alt="Random first slide">
+                <div class="carousel-caption">
+                    <h3>10 seconds between slides...</h3>
+                    <p>This carousel uses customized default values.</p>
+                </div>
+            </ng-template>
+            <ng-template *ngbSlide>
+                <img src="https://lorempixel.com/900/500?r=5"  alt="Random second slide">
+                <div class="carousel-caption">
+                    <h3>No keyboard...</h3>
+                    <p>This carousel uses customized default values.</p>
+                </div>
+            </ng-template>
+            <ng-template *ngbSlide>
+                <img src="https://lorempixel.com/900/500?r=6" alt="Random third slide">
+                <div class="carousel-caption">
+                    <h3>And no wrap after last slide.</h3>
+                    <p>This carousel uses customized default values.</p>
+                </div>
+            </ng-template>
+        </ngb-carousel>
+        -->
+
+
+
+
+
+
+        <!--<div *ngFor="let item of carousel">-->
             <!--<h4>{{item.title}}</h4>-->
-        </div>
+        <!--</div>-->
     </div>
 
     <div infinite-scroll
@@ -71,14 +108,18 @@
 
                 <!--[ngStyle]="{ 'background-image': 'url(' + BASE_URL + item.thumbnail + ')'}"-->
 
-                <div class=" news-image"  >
+                <a [routerLink]="['/article', item._id]" routerLinkActive="active"  >
+                    <div class=" news-image"  >
 
-                </div>
+                    </div>
 
-                <div class="footer-bg">
-                    <h4>{{item.title}}</h4>
-                    <h5>{{item.posted_at | date: 'dd MMM, yyyy h:mm a' }}</h5>
-                </div>
+                    <div class="footer-bg">
+                        <h4>{{item.title}}</h4>
+                        <h5>{{item.posted_at | date: 'dd MMM, yyyy h:mm a' }}</h5>
+                    </div>
+                </a>
+
+
 
                 <!--<div class="container content" [ngStyle]="{ 'background-image': 'url(' + BASE_URL + item.thumbnail + ')'}">-->
                 <!--<div class="row">-->

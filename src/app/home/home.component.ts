@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { NewsService } from '../service/news.service';
@@ -7,8 +7,8 @@ import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 
 
 interface DataResponse {
-    carousel: any,
-    list: any
+    carousel: any;
+    list: any;
 }
 
 @Component({
@@ -24,11 +24,12 @@ export class HomeComponent implements OnInit {
     IMG_URL = this.BASE_URL + '/public/images/2018-10-19_12:32.jpg';
 
     hello = 'good';
+    @ViewChild('carousel') carousel: any;
 
     currentPage = 0;
     limit = 7;
 
-    carousel: Array<any> = [];
+    // carousel: Array<any> = [];
     news: Array<any> = [];
 
     // load more;
@@ -41,10 +42,11 @@ export class HomeComponent implements OnInit {
     images = [1, 2, 3, 4].map(() => `https://picsum.photos/900/500?random&t=${Math.random()}`);
 
     constructor(private config: NgbCarouselConfig, private http: HttpClient, private newsService: NewsService) {
-        config.interval = 10000;
-        config.wrap = false;
+        config.interval = 1000;
         config.keyboard = false;
-        config.pauseOnHover = false;
+        // config.wrap = false;
+        // config.keyboard = false;
+        // config.pauseOnHover = false;
     }
 
     ngOnInit() {
