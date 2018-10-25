@@ -27,7 +27,7 @@ export class HomeComponent implements OnInit {
     @ViewChild('carousel') carousel: any;
 
     currentPage = 0;
-    limit = 7;
+    limit = 15;
 
     // carousel: Array<any> = [];
     news: Array<any> = [];
@@ -92,12 +92,13 @@ export class HomeComponent implements OnInit {
             page: this.currentPage,
             limit: this.limit
         }).subscribe((res: DataResponse) => {
-            console.log(res);
+            // console.log(res);
             // console.log(res.carousel);
             // console.log(res.list);
-
             this.carousel = res.carousel;
             this.news = this.news.concat(res.list);
+
+            console.log(this.news.length);
 
         }, (errorResponse: HttpErrorResponse) => {
             console.log(errorResponse);
