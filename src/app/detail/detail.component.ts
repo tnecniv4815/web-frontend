@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 
 import { ActivatedRoute } from '@angular/router';
 import {HttpClient, HttpErrorResponse} from '@angular/common/http';
+import { SERVER_BASE_URL } from '../util/config';
 
 interface ArticleDetail {
     contents: any;
@@ -17,7 +18,13 @@ interface ArticleDetail {
 })
 export class DetailComponent implements OnInit {
 
-  BASE_URL = 'http://localhost:3000';
+  // BASE_URL = 'http://localhost:3000';
+  detailUrl = SERVER_BASE_URL + '/article/detail';
+  BASE_URL = SERVER_BASE_URL;
+
+  // link = 'http://localhost:3000/article/detail';
+
+
 
   // @Input() articleId: string;
 
@@ -42,7 +49,7 @@ export class DetailComponent implements OnInit {
   }
 
   getNewsDetail(articleId: string) {
-      const request = this.http.post<ArticleDetail>('http://localhost:3000/article/detail', {
+      const request = this.http.post<ArticleDetail>(this.detailUrl, {
           article_id: articleId
       }).subscribe((res: ArticleDetail) => {
           console.log(res);

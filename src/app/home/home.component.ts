@@ -4,6 +4,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { NewsService } from '../service/news.service';
 import {Data} from '@angular/router';
 import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
+import {SERVER_BASE_URL} from '../util/config';
 
 
 interface DataResponse {
@@ -19,17 +20,20 @@ interface DataResponse {
 })
 export class HomeComponent implements OnInit {
 
-    BASE_URL = 'http://localhost:3000';
+    // BASE_URL = 'http://localhost:3000';
 
-    IMG_URL = this.BASE_URL + '/public/images/2018-10-19_12:32.jpg';
+    BASE_URL = SERVER_BASE_URL;
+    listUrl = SERVER_BASE_URL + '/article/list';
 
-    hello = 'good';
-    @ViewChild('carousel') carousel: any;
+    // IMG_URL = this.BASE_URL + '/public/images/2018-10-19_12:32.jpg';
+
+    // hello = 'good';
+    // @ViewChild('carousel') carousel: any;
 
     currentPage = 0;
     limit = 15;
 
-    // carousel: Array<any> = [];
+    carousel: Array<any> = [];
     news: Array<any> = [];
 
     // load more;
@@ -39,7 +43,7 @@ export class HomeComponent implements OnInit {
     throttle = 30;
 
     // carousel
-    images = [1, 2, 3, 4].map(() => `https://picsum.photos/900/500?random&t=${Math.random()}`);
+    // images = [1, 2, 3, 4].map(() => `https://picsum.photos/900/500?random&t=${Math.random()}`);
 
     constructor(private config: NgbCarouselConfig, private http: HttpClient, private newsService: NewsService) {
         config.interval = 1000;
@@ -88,7 +92,7 @@ export class HomeComponent implements OnInit {
         //     console.log(errorResponse);
         // });
 
-        const request = this.http.post<DataResponse>('http://localhost:3000/article/list', {
+        const request = this.http.post<DataResponse>(this.listUrl, {
             page: this.currentPage,
             limit: this.limit
         }).subscribe((res: DataResponse) => {
