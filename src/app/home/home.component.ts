@@ -7,9 +7,15 @@ import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 import {SERVER_BASE_URL} from '../util/config';
 
 
-interface DataResponse {
-    carousel: any;
-    list: any;
+// interface DataResponse {
+//     carousel: any;
+//     list: any;
+// }
+
+interface Article {
+    id: any;
+    title: any;
+    thumbnail: any;
 }
 
 @Component({
@@ -92,17 +98,24 @@ export class HomeComponent implements OnInit {
         //     console.log(errorResponse);
         // });
 
-        const request = this.http.post<DataResponse>(this.listUrl, {
+        console.log(this.listUrl);
+        const request = this.http.post<Article[]>(this.listUrl, {
             page: this.currentPage,
-            limit: this.limit
-        }).subscribe((res: DataResponse) => {
+            limit: this.limit,
+            startDateTime: '06-12-2018',
+            endDateTime: '08-12-2018'
+        }).subscribe((res: Article[]) => {
             // console.log(res);
             // console.log(res.carousel);
             // console.log(res.list);
-            this.carousel = res.carousel;
-            this.news = this.news.concat(res.list);
+            // this.carousel = res.carousel;
+            // this.news = this.news.concat(res.list);
+
+            this.news = res;
 
             console.log(this.news.length);
+            console.log(this.news);
+            // console.log(this.news);
 
         }, (errorResponse: HttpErrorResponse) => {
             console.log(errorResponse);
